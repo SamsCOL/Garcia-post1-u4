@@ -1,0 +1,169 @@
+/* ─── Tablero de Tareas del Equipo — estilos ─────────────────────────── */
+:root {
+  --fondo: #f4f6fa;
+  --superficie: #ffffff;
+  --texto: #1f2937;
+  --texto-suave: #6b7280;
+  --borde: #d9dee7;
+  --primario: #3949ab;
+  --primario-hover: #283593;
+  --peligro: #c62828;
+
+  --alta: #c62828;
+  --media: #f57f17;
+  --baja: #2e7d32;
+
+  --pendiente: #9e9e9e;
+  --en-progreso: #1565c0;
+  --completada: #2e7d32;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  padding: 0 16px 40px;
+}
+
+header {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 0 8px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+h1 { margin: 0; font-size: 1.6rem; }
+
+.enlace-nav { color: var(--primario); text-decoration: none; font-weight: 600; }
+.enlace-nav:hover { text-decoration: underline; }
+
+#controles,
+#filtros,
+#stats,
+#tablero {
+  max-width: 1100px;
+  margin: 16px auto 0;
+}
+
+/* Formulario de creación */
+#controles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  background: var(--superficie);
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid var(--borde);
+}
+
+#controles input { flex: 1 1 200px; }
+
+input, select, button {
+  font: inherit;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--borde);
+}
+
+button {
+  cursor: pointer;
+  background: var(--superficie);
+}
+
+#btn-agregar {
+  background: var(--primario);
+  color: #fff;
+  border-color: var(--primario);
+  font-weight: 600;
+}
+#btn-agregar:hover { background: var(--primario-hover); }
+
+/* Filtros */
+#filtros {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.filtro-grupo { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.btn-filtro-estado.activo {
+  background: var(--primario);
+  color: #fff;
+  border-color: var(--primario);
+}
+
+/* Estadísticas */
+#stats {
+  padding: 10px 14px;
+  background: #e8eaf6;
+  border-radius: 8px;
+  font-weight: 600;
+  color: var(--primario-hover);
+}
+
+/* Tablero */
+#tablero {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 14px;
+}
+
+.tarea {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-left: 6px solid var(--pendiente);
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tarea h3 { margin: 4px 0 0; font-size: 1.05rem; word-break: break-word; }
+.tarea p  { margin: 0; color: var(--texto-suave); word-break: break-word; }
+
+/* Borde según estado */
+.tarea.estado-pendiente   { border-left-color: var(--pendiente); }
+.tarea.estado-en-progreso { border-left-color: var(--en-progreso); }
+.tarea.estado-completada  { border-left-color: var(--completada); opacity: .85; }
+.tarea.estado-completada h3 { text-decoration: line-through; }
+
+/* Badges */
+.badge-prioridad,
+.badge-estado {
+  display: inline-block;
+  width: fit-content;
+  font-size: .75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  color: #fff;
+}
+
+.prioridad-alta  .badge-prioridad { background: var(--alta); }
+.prioridad-media .badge-prioridad { background: var(--media); }
+.prioridad-baja  .badge-prioridad { background: var(--baja); }
+
+.estado-pendiente   .badge-estado { background: var(--pendiente); }
+.estado-en-progreso .badge-estado { background: var(--en-progreso); }
+.estado-completada  .badge-estado { background: var(--completada); }
+
+.acciones-tarea { display: flex; gap: 6px; margin-top: 6px; }
+
+.btn-avanzar { border-color: var(--en-progreso); color: var(--en-progreso); }
+.btn-avanzar:hover { background: #e3f2fd; }
+
+.btn-eliminar { border-color: var(--peligro); color: var(--peligro); }
+.btn-eliminar:hover { background: #ffebee; }
+
+/* Tarjetas ocultas por los filtros */
+.oculta { display: none; }

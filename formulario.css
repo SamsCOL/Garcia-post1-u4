@@ -1,0 +1,130 @@
+/* ─── Registro de Colaborador — estilos ──────────────────────────────── */
+:root {
+  --fondo: #f4f6fa;
+  --superficie: #ffffff;
+  --texto: #1f2937;
+  --texto-suave: #6b7280;
+  --borde: #d9dee7;
+  --primario: #3949ab;
+  --primario-hover: #283593;
+  --error: #c62828;
+  --error-fondo: #fff5f5;
+  --exito: #2e7d32;
+  --exito-fondo: #e8f5e9;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  padding: 24px 16px 40px;
+}
+
+.contenedor {
+  max-width: 520px;
+  margin: 0 auto;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.enlace-nav { color: var(--primario); text-decoration: none; font-weight: 600; font-size: .9rem; }
+.enlace-nav:hover { text-decoration: underline; }
+
+h1 { margin: 12px 0 20px; font-size: 1.5rem; }
+
+.campo-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+
+label { font-weight: 600; font-size: .95rem; }
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select {
+  font: inherit;
+  padding: 9px 12px;
+  border: 1.5px solid var(--borde);
+  border-radius: 6px;
+  background: var(--superficie);
+  color: var(--texto);
+  transition: border-color .15s, box-shadow .15s;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primario);
+  box-shadow: 0 0 0 3px rgba(57, 73, 171, .18);
+}
+
+/* Estados de validación */
+.invalido {
+  border-color: var(--error) !important;
+  background: var(--error-fondo);
+}
+.valido {
+  border-color: var(--exito) !important;
+}
+
+/* Checkbox */
+.campo-checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.campo-checkbox input { width: 18px; height: 18px; accent-color: var(--primario); }
+.campo-checkbox input.invalido { outline: 2px solid var(--error); outline-offset: 2px; }
+
+/* Mensajes de error */
+.msg-error {
+  display: none;
+  color: var(--error);
+  font-size: .85rem;
+}
+.msg-error.visible { display: block; }
+
+/* Indicador de fortaleza */
+#fortaleza {
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+/* Botón */
+#btn-registrar {
+  width: 100%;
+  font: inherit;
+  font-weight: 700;
+  padding: 11px;
+  border: none;
+  border-radius: 6px;
+  background: var(--primario);
+  color: #fff;
+  cursor: pointer;
+  margin-top: 6px;
+}
+#btn-registrar:hover { background: var(--primario-hover); }
+
+/* Mensaje de éxito */
+#mensaje-exito {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 6px;
+  background: var(--exito-fondo);
+  color: var(--exito);
+  font-weight: 600;
+  text-align: center;
+}
+
+.oculto { display: none !important; }
